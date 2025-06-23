@@ -22,8 +22,6 @@ function getHumanChoice() {
     return prompt("Enter your pick");
 }
 
-
-
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
@@ -33,6 +31,7 @@ function playGame() {
 
         if (humanChoice == computerChoice) {
             console.log("It's a Draw! No points earned.");
+            return true;
         }
         else if (humanChoice == "ROCK" && computerChoice == "PAPER"){
             console.log("You win! Rock beats Paper!");
@@ -58,12 +57,19 @@ function playGame() {
             console.log("You Lose! Rock Beats Scissor!");
             computerScore++;
         }
+
+        return false;
     }
 
     for(let i = 1; i <= 5; i++) {
+        
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
+        const isDraw = playRound(humanSelection, computerSelection);
+
+        if (isDraw) {
+            i--;
+        }
     }
     
     if (humanScore > computerScore) {
