@@ -78,6 +78,8 @@ function playGame() {
     else {
         console.log("You Lose!");
     }
+
+    // this is a test
 }
 
 playGame();
